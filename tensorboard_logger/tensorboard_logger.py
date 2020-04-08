@@ -9,7 +9,7 @@ import numpy as np
 
 import six
 
-import scipy.misc
+from PIL import Image
 try:
     from StringIO import StringIO  # Python 2.7
 except ImportError:
@@ -154,7 +154,7 @@ class Logger(object):
                 s = StringIO()
             except:
                 s = BytesIO()
-            scipy.misc.toimage(img).save(s, format="png")
+            Image.fromarray(img).save(s, format="png")
 
             # Create an Image object
             img_sum = summary_pb2.Summary.Image(
